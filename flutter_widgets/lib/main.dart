@@ -78,8 +78,12 @@ class _MyHomePageState extends State<MyHomePage> {
             setState((){
               sliderValue = newValue as double;
             });
-          })
-      ],)
+          }),
+               ],),
+               floatingActionButton:  FloatingActionButton(
+            
+            onPressed:(){},child:Icon(Icons.add))
+,
     );
   }
 }
