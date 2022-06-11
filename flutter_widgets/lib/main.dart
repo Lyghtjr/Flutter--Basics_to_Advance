@@ -34,6 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String _selectedGender = 'male';
   bool item = false;
   double sliderValue = 5;
+
+  final TextEditingController _textFieldController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,8 +84,33 @@ class _MyHomePageState extends State<MyHomePage> {
                ],),
                floatingActionButton:  FloatingActionButton(
             
-            onPressed:(){},child:Icon(Icons.add))
+            onPressed:()=>_dialogBox(context),child:Icon(Icons.add))
 ,
+    );
+  }
+  Future _dialogBox(BuildContext context) async {
+    return showDialog(
+      context:context,
+      builder:((BuildContext context){
+        return AlertDialog(
+          title: Text("Add Item"),
+          content: TextField(
+            controller: _textFieldController,
+            decoration: InputDecoration(
+              labelText: "Item",
+            ),
+          
+          ),
+          actions: [
+            FlatButton(onPressed: (){
+              Navigator.of(context).pop();
+            }, child: Text("Add")),
+            FlatButton(onPressed: (){
+              Navigator.of(context).pop();
+            }, child: Text("Cancel"))
+          ],
+        );
+      })
     );
   }
 }
