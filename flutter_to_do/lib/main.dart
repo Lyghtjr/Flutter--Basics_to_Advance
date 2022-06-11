@@ -46,8 +46,16 @@ void _addTodo(String title) {
   });
   _textFieldController.clear();
 }
+void _removeTodo(int index) {
+  setState(() {
+    _todoList.removeAt(index);
+  });
+}
+
 Widget _buildTodoItem(String title) {
-    return ListTile(title: Text(title));
+    return ListTile(title: Text(title),
+    onLongPress: () => _removeTodo(_todoList.indexOf(title)),
+    );
   }
 
   Future  _dialogBox(BuildContext context) async {
